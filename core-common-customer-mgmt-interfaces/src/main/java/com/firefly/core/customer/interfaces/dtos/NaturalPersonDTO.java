@@ -31,6 +31,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 
 import java.math.BigDecimal;
@@ -101,6 +102,10 @@ public class NaturalPersonDTO {
     
     @Size(max = 20, message = "Suffix must not exceed 20 characters")
     private String suffix;
+
+    @Min(value = 0, message = "Number of children must be non-negative")
+    private Short numberOfChildren;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

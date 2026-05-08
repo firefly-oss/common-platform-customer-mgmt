@@ -82,6 +82,27 @@ public class LegalEntity {
     @Column("incorporation_country_id")
     private UUID incorporationCountryId;
 
+    @Column("employee_range")
+    private String employeeRange;
+
+    @Column("annual_revenue")
+    private BigDecimal annualRevenue;
+
+    @Column("cnae_code")
+    private String cnaeCode;
+
+    @Column("contact_name")
+    private String contactName;
+
+    @Column("contact_position")
+    private String contactPosition;
+
+    @Column("contact_email")
+    private String contactEmail;
+
+    @Column("contact_phone")
+    private String contactPhone;
+
     @Column("created_at")
     private LocalDateTime createdAt;
 

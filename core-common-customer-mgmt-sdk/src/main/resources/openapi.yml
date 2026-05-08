@@ -3055,6 +3055,7 @@ components:
           enum:
           - SINGLE
           - MARRIED
+          - SEPARATED
           - DIVORCED
           - WIDOWED
         taxIdNumber:
@@ -3078,6 +3079,10 @@ components:
           maxLength: 20
           minLength: 0
           type: string
+        numberOfChildren:
+          minimum: 0
+          type: integer
+          format: int32
         createdAt:
           type: string
           format: date-time
@@ -3139,6 +3144,34 @@ components:
         incorporationCountryId:
           type: string
           format: uuid
+        employeeRange:
+          pattern: ^(1-5|6-25|26-50|51-250|250\+)$
+          type: string
+        annualRevenue:
+          minimum: 0.0
+          exclusiveMinimum: false
+          type: number
+        cnaeCode:
+          maxLength: 10
+          minLength: 0
+          type: string
+        contactName:
+          maxLength: 255
+          minLength: 0
+          type: string
+        contactPosition:
+          maxLength: 255
+          minLength: 0
+          type: string
+        contactEmail:
+          maxLength: 255
+          minLength: 0
+          type: string
+          format: email
+        contactPhone:
+          maxLength: 50
+          minLength: 0
+          type: string
         createdAt:
           type: string
           format: date-time
@@ -3300,6 +3333,9 @@ components:
           maxLength: 50
           minLength: 0
           type: string
+        applicationId:
+          type: string
+          format: uuid
         createdAt:
           type: string
           format: date-time

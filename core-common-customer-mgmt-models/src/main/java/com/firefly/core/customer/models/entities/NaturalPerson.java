@@ -100,6 +100,9 @@ public class NaturalPerson {
     @Column("suffix")
     private String suffix;
 
+    @Column("number_of_children")
+    private Short numberOfChildren;
+
     @Column("created_at")
     private LocalDateTime createdAt;
 

@@ -28,6 +28,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 
@@ -88,6 +89,29 @@ public class LegalEntityDTO {
 
     @FilterableId
     private UUID incorporationCountryId;
+
+    @Pattern(regexp = "^(1-5|6-25|26-50|51-250|250\\+)$", message = "Employee range must be one of: 1-5, 6-25, 26-50, 51-250, 250+")
+    private String employeeRange;
+
+    @DecimalMin(value = "0.0", inclusive = true, message = "Annual revenue must be non-negative")
+    private BigDecimal annualRevenue;
+
+    @Size(max = 10, message = "CNAE code must not exceed 10 characters")
+    private String cnaeCode;
+
+    @Size(max = 255, message = "Contact name must not exceed 255 characters")
+    private String contactName;
+
+    @Size(max = 255, message = "Contact position must not exceed 255 characters")
+    private String contactPosition;
+
+    @Email(message = "Contact email must be a valid email address")
+    @Size(max = 255, message = "Contact email must not exceed 255 characters")
+    private String contactEmail;
+
+    @Size(max = 50, message = "Contact phone must not exceed 50 characters")
+    private String contactPhone;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

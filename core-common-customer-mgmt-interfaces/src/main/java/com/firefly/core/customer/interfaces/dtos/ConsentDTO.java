@@ -58,6 +58,10 @@ public class ConsentDTO {
     
     @Size(max = 50, message = "Channel must not exceed 50 characters")
     private String channel;
+
+    @FilterableId
+    private UUID applicationId;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

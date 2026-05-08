@@ -61,6 +61,9 @@ public class Consent {
     @Column("channel")
     private String channel;
 
+    @Column("application_id")
+    private UUID applicationId;
+
     @Column("created_at")
     private LocalDateTime createdAt;
 
