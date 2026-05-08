@@ -24,6 +24,7 @@ package com.firefly.core.customer.interfaces.enums;
 public enum MaritalStatus {
     SINGLE,
     MARRIED,
+    SEPARATED,
     DIVORCED,
     WIDOWED
 }
