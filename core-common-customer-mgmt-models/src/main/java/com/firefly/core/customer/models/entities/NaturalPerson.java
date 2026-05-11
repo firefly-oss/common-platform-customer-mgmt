@@ -103,6 +103,40 @@ public class NaturalPerson {
     @Column("number_of_children")
     private Short numberOfChildren;
 
+    // ─── Economic profile (V11) — fed by exp-onboarding's /economic-data endpoint.
+    //     The front-end field `position`     maps to `occupation` (above).
+    //     The front-end field `monthlySalary` maps to `monthly_income` (above).
+
+    @Column("employment_status")
+    private String employmentStatus;
+
+    @Column("employment_type")
+    private String employmentType;
+
+    @Column("employer")
+    private String employer;
+
+    @Column("employment_start_date")
+    private java.time.LocalDate employmentStartDate;
+
+    @Column("annual_paydays")
+    private Short annualPaydays;
+
+    @Column("housing_type")
+    private String housingType;
+
+    @Column("housing_cost")
+    private BigDecimal housingCost;
+
+    @Column("housing_start_date")
+    private java.time.LocalDate housingStartDate;
+
+    @Column("existing_loans")
+    private Short existingLoans;
+
+    @Column("other_debts")
+    private BigDecimal otherDebts;
+
     @Column("created_at")
     private LocalDateTime createdAt;
 

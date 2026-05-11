@@ -3083,6 +3083,44 @@ components:
           minimum: 0
           type: integer
           format: int32
+        employmentStatus:
+          maxLength: 30
+          minLength: 0
+          type: string
+        employmentType:
+          maxLength: 20
+          minLength: 0
+          type: string
+        employer:
+          maxLength: 200
+          minLength: 0
+          type: string
+        employmentStartDate:
+          type: string
+          format: date
+        annualPaydays:
+          minimum: 0
+          type: integer
+          format: int32
+        housingType:
+          maxLength: 20
+          minLength: 0
+          type: string
+        housingCost:
+          minimum: 0.0
+          exclusiveMinimum: false
+          type: number
+        housingStartDate:
+          type: string
+          format: date
+        existingLoans:
+          minimum: 0
+          type: integer
+          format: int32
+        otherDebts:
+          minimum: 0.0
+          exclusiveMinimum: false
+          type: number
         createdAt:
           type: string
           format: date-time
