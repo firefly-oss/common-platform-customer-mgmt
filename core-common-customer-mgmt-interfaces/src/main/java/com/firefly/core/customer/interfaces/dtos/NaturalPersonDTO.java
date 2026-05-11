@@ -106,6 +106,34 @@ public class NaturalPersonDTO {
     @Min(value = 0, message = "Number of children must be non-negative")
     private Short numberOfChildren;
 
+    @Size(max = 30, message = "employmentStatus must not exceed 30 characters")
+    private String employmentStatus;
+
+    @Size(max = 20, message = "employmentType must not exceed 20 characters")
+    private String employmentType;
+
+    @Size(max = 200, message = "employer must not exceed 200 characters")
+    private String employer;
+
+    private LocalDate employmentStartDate;
+
+    @Min(value = 0, message = "annualPaydays must be non-negative")
+    private Short annualPaydays;
+
+    @Size(max = 20, message = "housingType must not exceed 20 characters")
+    private String housingType;
+
+    @DecimalMin(value = "0.0", inclusive = true, message = "housingCost must be non-negative")
+    private BigDecimal housingCost;
+
+    private LocalDate housingStartDate;
+
+    @Min(value = 0, message = "existingLoans must be non-negative")
+    private Short existingLoans;
+
+    @DecimalMin(value = "0.0", inclusive = true, message = "otherDebts must be non-negative")
+    private BigDecimal otherDebts;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
