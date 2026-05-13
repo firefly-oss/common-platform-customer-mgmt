@@ -26,8 +26,10 @@ import com.firefly.core.customer.interfaces.dtos.LegalEntityDTO;
 import com.firefly.core.customer.models.entities.LegalEntity;
 import com.firefly.core.customer.models.repositories.LegalEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 import java.util.UUID;
 
@@ -92,6 +94,9 @@ public class LegalEntityServiceImpl implements LegalEntityService {
     public Mono<LegalEntityDTO> getLegalEntityByPartyId(UUID partyId) {
         return repository.findByPartyId(partyId)
                 .map(mapper::toDTO)
-                .next();
+                .next()
+                .switchIfEmpty(Mono.error(new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Legal entity not found for partyId: " + partyId)));
     }
 }

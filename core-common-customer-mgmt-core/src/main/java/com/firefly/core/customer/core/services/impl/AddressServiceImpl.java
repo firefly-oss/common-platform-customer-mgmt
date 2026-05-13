@@ -43,15 +43,16 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Mono<PaginationResponse<AddressDTO>> filterAddresses(UUID partyId, FilterRequest<AddressDTO> filterRequest) {
-        // Add partyId filter to the existing filter request
-        // For now, we'll delegate to FilterUtils but this could be enhanced to add partyId filtering
+        if (filterRequest.getFilters() == null) {
+            filterRequest.setFilters(new AddressDTO());
+        }
+        filterRequest.getFilters().setPartyId(partyId);
         return FilterUtils
                 .createFilter(
                         Address.class,
                         mapper::toDTO
                 )
                 .filter(filterRequest);
-        // TODO: Enhance FilterUtils to support party-specific filtering
     }
 
     @Override

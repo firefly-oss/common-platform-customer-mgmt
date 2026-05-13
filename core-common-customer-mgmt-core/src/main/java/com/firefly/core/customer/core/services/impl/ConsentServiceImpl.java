@@ -43,6 +43,10 @@ public class ConsentServiceImpl implements ConsentService {
 
     @Override
     public Mono<PaginationResponse<ConsentDTO>> filterConsents(UUID partyId, FilterRequest<ConsentDTO> filterRequest) {
+        if (filterRequest.getFilters() == null) {
+            filterRequest.setFilters(new ConsentDTO());
+        }
+        filterRequest.getFilters().setPartyId(partyId);
         return FilterUtils
                 .createFilter(
                         Consent.class,

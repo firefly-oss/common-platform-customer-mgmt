@@ -43,6 +43,10 @@ public class PhoneContactServiceImpl implements PhoneContactService {
 
     @Override
     public Mono<PaginationResponse<PhoneContactDTO>> filterPhoneContacts(UUID partyId, FilterRequest<PhoneContactDTO> filterRequest) {
+        if (filterRequest.getFilters() == null) {
+            filterRequest.setFilters(new PhoneContactDTO());
+        }
+        filterRequest.getFilters().setPartyId(partyId);
         return FilterUtils
                 .createFilter(
                         PhoneContact.class,

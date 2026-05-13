@@ -43,6 +43,10 @@ public class IdentityDocumentServiceImpl implements IdentityDocumentService {
 
     @Override
     public Mono<PaginationResponse<IdentityDocumentDTO>> filterIdentityDocuments(UUID partyId, FilterRequest<IdentityDocumentDTO> filterRequest) {
+        if (filterRequest.getFilters() == null) {
+            filterRequest.setFilters(new IdentityDocumentDTO());
+        }
+        filterRequest.getFilters().setPartyId(partyId);
         return FilterUtils
                 .createFilter(
                         IdentityDocument.class,

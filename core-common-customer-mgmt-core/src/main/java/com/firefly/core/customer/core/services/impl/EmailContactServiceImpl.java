@@ -43,6 +43,10 @@ public class EmailContactServiceImpl implements EmailContactService {
 
     @Override
     public Mono<PaginationResponse<EmailContactDTO>> filterEmailContacts(UUID partyId, FilterRequest<EmailContactDTO> filterRequest) {
+        if (filterRequest.getFilters() == null) {
+            filterRequest.setFilters(new EmailContactDTO());
+        }
+        filterRequest.getFilters().setPartyId(partyId);
         return FilterUtils
                 .createFilter(
                         EmailContact.class,
